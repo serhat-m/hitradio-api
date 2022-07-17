@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  hitradio-api:
+    build:
+      context: ./
+      dockerfile: "Dockerfile"
+    image: "hitradio-api:latest"
+    container_name: "hitradio-api"
+    env_file:
+      - "./.env"
+    stdin_open: true # docker container run -i
+    tty: true # docker container run -t
+    ports:
+      - "${PUBLIC_PORT}:${CONTAINER_PORT}"

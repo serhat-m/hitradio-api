@@ -1,0 +1,9 @@
+services:
+  hitradio-api:
+    command: "npm run dev"
+    restart: "always"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - "./:/app" # Mirror local code for development
+      - "/app/node_modules" # Prevent node_modules override (dev-code mirroring)
