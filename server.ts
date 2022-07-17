@@ -1,4 +1,5 @@
 import Fastify from "fastify"
+import "./src/extensions/string.extension"
 
 // Create fastify instance
 const fastify = Fastify({
