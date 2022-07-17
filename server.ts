@@ -1,8 +1,4 @@
 import Fastify from "fastify"
-import { Environment } from "./src/types/environment"
-
-// Define environment variables
-const env = process.env as Environment
 
 // Create fastify instance
 const fastify = Fastify({
@@ -17,10 +13,14 @@ const fastify = Fastify({
     }
 })
 
+// Routes
+fastify.register(require("./src/routes/speedCam"), { prefix: "api" })
+fastify.register(require("./src/routes/trafficJam"), { prefix: "api" })
+
 // Start server
 async function server() {
     try {
-        await fastify.listen({ port: env.CONTAINER_PORT, host: "0.0.0.0" })
+        await fastify.listen({ port: process.env.CONTAINER_PORT, host: "0.0.0.0" })
     } catch(err) {
         fastify.log.error(err)
         process.exit(1)
