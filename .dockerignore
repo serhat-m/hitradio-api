@@ -1,0 +1,12 @@
+.gitignore
+.git
+.github
+node_modules
+package-lock.json
+.vscode
+docker-compose.yaml
+docker-compose.prod.yaml
+docker-compose.dev.yaml
+Dockerfile
+README.md
+LICENSE
