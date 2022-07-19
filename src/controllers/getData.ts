@@ -27,7 +27,7 @@ export default async function getData(url: string, selector: string, req: Fastif
             }
         }
     
-        res.send({results: tempArr.length, data: tempArr.length > 0 ? tempArr : null})
+        res.send({statusCode: 200, results: tempArr.length, data: tempArr.length > 0 ? tempArr : null})
     } catch(err) {
         throw err
     }
