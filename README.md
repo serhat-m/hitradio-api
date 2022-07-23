@@ -1,9 +1,45 @@
 [Hitradio Ohr](https://www.hitradio-ohr.de) is a radio station that provides speed camera and traffic jam data for the Ortenaukreis region in Germany. Despite their clear website, sometimes things have to be as quick and easy as possible and that's why I developed this API.
 
-# Installation
+# Environment variables
+
+Create a `.env` file in the root directory and pass the following variables:
+
+- `PUBLIC_PORT` `string`
+- `CONTAINER_PORT` `string`
+- `SCRAPING_URL` `string`
+- `SPEED_CAM_SELECTOR` `string`
+
+## Example `.env` file
+
+```
+PUBLIC_PORT="80"
+CONTAINER_PORT="80"
+SCRAPING_URL="https://www.hitradio-ohr.de/verkehr-blitzer"
+SPEED_CAM_SELECTOR=".speed-camera-item"
+TRAFFIC_JAM_SELECTOR=".traffic-jam-item"
+```
+
+# Production Mode
+
+## Start Container
 
 ```bash
 docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build
+```
+
+# Development Mode
+
+Since the project is containerized, no TypeScript declarations are available on the host. For `IntelliSense` purposes, you should copy the `node_modules` folder from the container:
+
+```bash
+# Navigate to the root directory of the project and run:
+docker cp hitradio-api:/app/node_modules $(pwd)
+```
+
+## Start Container
+
+```bash
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build
 ```
 
 # Endpoints
