@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  hitradio-api:
+    build:
+      args:
+        - BUILD_MODE=production
+    command: "npm run prod"
+    restart: "always"
+    environment:
+      - NODE_ENV=production

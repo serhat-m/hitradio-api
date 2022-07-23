@@ -1,5 +1,9 @@
+version: "3.9"
 services:
   hitradio-api:
+    build:
+      args:
+        - BUILD_MODE=development
     command: "npm run dev"
     restart: "always"
     environment:
