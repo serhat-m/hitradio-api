@@ -24,7 +24,7 @@ TRAFFIC_JAM_SELECTOR=".traffic-jam-item"
 ## Start Container
 
 ```bash
-docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build -d
 ```
 
 # Development Mode
