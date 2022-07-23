@@ -17,11 +17,11 @@ export default class Scraper {
         }
     }
 
-    public async querySelectorAll(selector: string) {
+    public async querySelectorAll(selector: string){
         try {
             const html = await this.getHtml(this.fetchUrl)
             const { document } = new JSDOM(html).window
-            return Array.from(document.querySelectorAll(selector))
+            return Array.from(document.querySelectorAll(selector)) as HTMLDivElement[]
         } catch(err) {
             throw err
         }
