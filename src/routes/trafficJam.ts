@@ -5,6 +5,11 @@ export default function speedCam(instance: FastifyInstance, options: { prefix: s
     instance.route({
         method: "GET",
         url: "/trafficJam",
+        schema: {
+            querystring: {
+                search: { type: "string" }
+            }
+        },
         handler: (req, res) => getData(process.env.SCRAPING_URL, process.env.TRAFFIC_JAM_SELECTOR, req, res)
     })
 
