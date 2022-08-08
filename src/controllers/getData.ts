@@ -7,7 +7,7 @@ export default async function getData(url: string, selector: string, req: Fastif
         const filteredDomElements = await scraper.querySelectorAll(selector)
 
         const query = req.query as { search?: string }
-        const tempArr = []
+        const tempArr: string[] = []
 
         if(query.search) {
             const searchTerms = query.search.split(",")
@@ -17,13 +17,13 @@ export default async function getData(url: string, selector: string, req: Fastif
 
                 for(const searchTerm of searchTerms) {
                     if(elementText.includesFromArr(searchTerm.split(" "))) {
-                        tempArr.push(elementText)
+                        !tempArr.includes(elementText) && tempArr.push(elementText) // Check for duplicate with includes function
                     }
                 }
             }
         } else {
             for(const element of filteredDomElements) {
-                tempArr.push(element.textContent?.clean())
+                tempArr.push(element.textContent?.clean() as string)
             }
         }
     
